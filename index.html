@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Premium for HCMUTer</title>
+
+	<link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzTNPVIBk19IDlO79jBlVOBIWVZx_VqQ5QA6sBkTi7bbsx_RzOEmw2-aGQ&s">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -53,7 +55,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen font-sans text-gray-800 pb-16 bg-slate-900 relative z-0">
+<body class="min-h-screen font-sans text-gray-800 bg-slate-900 relative z-0">
 
     <!-- Khung hình nền full màn hình -->
     <div class="fixed inset-0 z-[-1] bg-center bg-no-repeat bg-cover pointer-events-none" style="background-image: linear-gradient(to top, rgba(37, 99, 235, 0.4) 0%, rgba(37, 99, 235, 0.1) 100%), url('https://images2.thanhnien.vn/zoom/1200_630/528068263637045248/2026/3/10/img0130-17730566223041255406991-480-122-1849-2312-crop-1773149008335608454047.jpg');"></div>
@@ -65,9 +67,9 @@
                 
                 <!-- Logo & Title -->
                 <div class="flex items-center gap-3 w-[calc(100%-110px)] lg:w-auto">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg flex-shrink-0">
-                        <i class="fa-solid fa-graduation-cap text-xl"></i>
-                    </div>
+                    <!-- Thay thế bằng thẻ ảnh cho logo -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/HCMUT_official_logo.png" alt="Logo" class="w-10 h-10 object-contain flex-shrink-0 rounded-lg">
+                    
                     <div class="overflow-hidden">
                         <h1 class="text-lg sm:text-xl font-bold text-gray-900 truncate">Service Premium for HCMUTer</h1>
                         <p class="text-xs text-gray-500 hidden sm:block">Hệ thống lưu trữ & tự tạo mã 2FA</p>
@@ -80,15 +82,15 @@
                     <span class="hidden sm:inline">Làm mới</span>
                 </button>
 
-                <!-- Khu vực liên hệ (Xuống dòng trên Mobile, Cùng hàng trên Desktop) -->
-                <div id="contact-section" class="order-3 lg:order-2 w-full lg:w-auto flex flex-row items-center justify-between lg:justify-end gap-2 pt-2 lg:pt-0 border-t border-gray-100 lg:border-none mt-1 lg:mt-0">
+                <!-- Khu vực liên hệ (Đã thêm class hidden, bỏ class flex) -->
+                <div id="contact-section" class="hidden order-3 lg:order-2 w-full lg:w-auto flex-row items-center justify-between lg:justify-end gap-2 pt-2 lg:pt-0 border-t border-gray-100 lg:border-none mt-1 lg:mt-0">
                     <span class="text-xs sm:text-sm font-semibold text-gray-600 mr-1">
                         Liên hệ để mua tài khoản dùng riêng:
                     </span>
                     <div class="flex items-center gap-2">
                         <!-- Nút Zalo -->
                         <a href="https://zalo.me/0816522665" target="_blank" title="Zalo - Nguyễn Đức Dũng" class="flex items-center gap-1.5 bg-white border border-gray-200 hover:bg-blue-50 px-2 sm:px-3 py-1.5 rounded-lg transition-colors shadow-sm">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Logo_Zalo.png" alt="Zalo" class="w-5 h-5 object-contain">
+                            <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png" alt="Zalo" class="w-5 h-5 object-contain">
                             <span class="text-xs font-medium text-blue-600 hidden md:inline">Zalo</span>
                         </a>
                         
@@ -176,8 +178,8 @@
         </div> <!-- Kết thúc Flex container -->
     </main>
 
-    <!-- Dòng chữ chạy quảng cáo (Footer) - Sẽ ẩn nếu tùy chọn là 'an' -->
-    <div id="marquee-section" class="fixed bottom-0 left-0 right-0 bg-blue-800 text-white py-2 z-40 border-t border-blue-900 shadow-lg flex items-center">
+    <!-- Dòng chữ chạy quảng cáo (Đã thêm class hidden, bỏ class flex) -->
+    <div id="marquee-section" class="hidden fixed bottom-0 left-0 right-0 bg-blue-800 text-white py-2 z-40 border-t border-blue-900 shadow-lg items-center">
         <div class="px-4 font-bold text-yellow-300 whitespace-nowrap bg-blue-800 z-10 relative shadow-[10px_0_10px_-5px_rgba(30,64,175,1)]">
             <i class="fa-solid fa-bullhorn mr-2"></i>THÔNG BÁO:
         </div>
@@ -279,13 +281,15 @@
 
                 if (displayOpt === 'an') {
                     contactSection.classList.add('hidden');
+                    contactSection.classList.remove('flex');
                     marqueeSection.classList.add('hidden');
-                    document.body.classList.remove('pb-16'); // Xóa khoảng trống chân trang
+                    marqueeSection.classList.remove('flex');
+                    document.body.classList.remove('pb-16'); 
                 } else {
                     contactSection.classList.remove('hidden');
-                    // Cần dùng display flex vì contact-section mặc định có class flex
                     contactSection.classList.add('flex'); 
                     marqueeSection.classList.remove('hidden');
+                    marqueeSection.classList.add('flex');
                     document.body.classList.add('pb-16');
                 }
             }
